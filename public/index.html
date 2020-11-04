@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Side Navigation Bar</title>
+	<link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="index.js" defer></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Joke menu  </h2>
+        <ul>
+            <li id="voresjokes">Vores jokes</li>
+            <li id="andresites">Andre sites</li>
+
+        </ul> 
+        </div>
+    <div class="main_content" id ="joky">
+        <div class="header" id="header">Velkommen til sjove jokes</div>  
+        <div class="info" id="infoJokes"></div>
+        <img src="smiley.png" id="smiley">
+        <div class="info" id="infoSites"></div>
+        <div class="tilføj" id="add">
+            <label for="setupinput" id="setuplabel"> Setup </label><br>
+            <input type="text" id="setupinput"><br>
+            <label for="punchlineinput"> Punchline </label><br>
+            <input type="text" id="punchlineinput"><br>
+            <button type="submit" id="submit">Tilføj</button><br>
+        </div>
+       
+    </div>
+</div>

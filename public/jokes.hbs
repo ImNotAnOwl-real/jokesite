@@ -1,0 +1,19 @@
+{{!-- index.hbs --}}
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="styles.css">
+<body>
+    <div>
+        {{#each jokes}}
+        <div class="in"></div>
+             <li id="setup">
+               <a>Setup: </a> {{setup}}
+            </li>
+             <li id="punchline">
+                <a>Punchline: </a>{{punchline}}
+            </li>
+
+        {{/each}}
+    </div>
+</body>
+</html>

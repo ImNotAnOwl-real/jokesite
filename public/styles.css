@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.tilføj {
+  margin-left: 20px;
+  margin-top: 50px;
+  padding: 20px;
+  
+  width: 500px;
+  
+  visibility: hidden;
+}
+#smiley{
+  animation: spin-animation 2.5s infinite;
+}
+
+@keyframes spin-animation {
+0% {
+  transform: rotate(0deg);
+}
+100% {
+  transform: rotate(359deg);
+}
+}
+#header{
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#setupinput{
+  width: 500px;
+  height: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#punchlineinput{
+  width: 500px;
+  margin-top: 10px;
+  height: 25px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#setup{
+  margin-left: 10px;
+  margin-top: 15px;
+  padding: 10px;
+
+}
+#punchline{
+  margin-left: 10px;
+  padding: 10px;
+}
+#submit{
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 50px;
+  height: 25px;
+}
+#submit:focus{
+  outline: none;
+}
+#punchlineinput:focus{
+  outline: none;
+}
+#setupinput:focus{
+  outline: none;
+}
+#submit:hover {
+  font-weight: bold;
+}
+.header{
+  background-color: slateblue;
+}
+.in{
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: dotted;
+  border-color: darkcyan;
+  width: 500px;
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+body{
+   background-color: #f3f5f9;
+}
+#voresjokes:hover{
+  cursor: pointer;
+  color: #717171;
+}
+#andresites:hover{
+  cursor: pointer;
+  color: #717171;
+}
+
+.wrapper{
+  display: flex;
+  position: relative;
+}
+
+.wrapper .sidebar{
+  width: 200px;
+  height: 100%;
+  padding: 30px 0px;
+  position: fixed;
+  background-color: #537895;
+  background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+
+}
+
+.wrapper .sidebar h2{
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 19px;
+}
+
+.wrapper .sidebar ul li{
+  padding: 15px;
+  color: white;
+  text-align: center;
+
+}    
+ 
+.wrapper .main_content{
+  width: 100%;
+  margin-left: 200px;
+}
+
+.wrapper .main_content .header{
+  padding: 20px;
+  background: #fff;
+
+}
+
+.wrapper .main_content .info{
+  margin: 20px;
+  color: #717171;
+  line-height: 25px;
+}
+
+.wrapper .main_content .info div{
+  margin-bottom: 20px;
+}
