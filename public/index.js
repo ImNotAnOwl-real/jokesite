@@ -19,12 +19,12 @@ let allesites;
 
 async function post(url, objekt) {
   const respons = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(objekt),
-      headers: { 'Content-Type': 'application/json' }
+    method: "POST",
+    body: JSON.stringify(objekt),
+    headers: { 'Content-Type': 'application/json' }
   });
   if (respons.status !== 200) // Created
-      throw new Error(respons.status);
+    throw new Error(respons.status);
   return await respons.json();
 }
 
@@ -48,8 +48,10 @@ alleJokes.addEventListener('click', async (event) => {
   if (!event.isTrusted) return // do nothing on the second run
   try {
     event.preventDefault()
-    document.getElementById('add').style.visibility ='visible';
-    document.getElementById('smiley').remove();
+    document.getElementById('add').style.visibility = 'visible';
+    if (document.contains(document.getElementById("smiley"))) {
+      document.getElementById("smiley").remove();
+    }
     document.getElementById('infoSites').innerHTML = " "
     let jokes = document.getElementById('infoJokes');
     let header = document.getElementById('header');
@@ -58,7 +60,7 @@ alleJokes.addEventListener('click', async (event) => {
     let joke = await get('api/jokes');
     jokes.innerHTML = await generateJokeTable(joke);
     // alleJokes.click() // simulate a new click
-  } catch(err) {
+  } catch (err) {
     console.error(err) // or alert it, or put the message on the page
   }
 })
@@ -70,8 +72,10 @@ andresites.addEventListener('click', async (event) => {
   if (!event.isTrusted) return // do nothing on the second run
   try {
     event.preventDefault()
-    document.getElementById('add').style.visibility ='hidden';
-    document.getElementById('smiley').remove();
+    document.getElementById('add').style.visibility = 'hidden';
+    if (document.contains(document.getElementById("smiley"))) {
+      document.getElementById("smiley").remove();
+    }
     document.getElementById('infoJokes').innerHTML = " "
     let header = document.getElementById('header');
     header.innerHTML = "Andre sites";
@@ -106,32 +110,14 @@ function findJokes() {
         }
       }
 
-      let jokesFraSites = await get('api/otherjokes/'+id);
+      let jokesFraSites = await get('api/otherjokes/' + id);
       console.log(jokesFraSites);
 
       let hjemmesider = document.getElementById('infoJokes');
-      
+
 
       hjemmesider.innerHTML = await generateJokeTable(jokesFraSites);
 
-
-
-
-
-      console.log(id);
-      // let selectedSites = allesites.options[allesites.selectedIndex].value
-
-      // let respons = await get(selectedSites + "api/otherjokes");
-      // console.log(respons.length);
-      // console.log(respons);
-      // console.log("hej");
-      // beskedFelt.value = " ";
-      // for (let i = 0; i < respons.length; i++)
-      // {
-      //     console.log(i);
-      //     console.log(respons[i].navn+"hej");
-      //    beskedFelt.value += respons[i].navn+ " : " + respons[i].Besked + "\n";
-      // }
     } catch (fejl) {
       console.log(fejl);
     }
@@ -140,34 +126,28 @@ function findJokes() {
 }
 
 
-let add = document.getElementById("add")
+let addJoke = document.getElementById("submit")
 
-add.addEventListener('click', async (event) => {
-if (!event.isTrusted) return
-try {
-event.preventDefault()
-let setupvalue = document.getElementById("setupinput").value
-let punchlinevalue = document.getElementById("punchlineinput").value
-await post('api/jokes',{setup: setupvalue,punchline: punchlinevalue});
-} catch(err) {
-  console.error(err) // or alert it, or put the message on the page
-}
+addJoke.addEventListener('click', async (event) => {
+  if (!event.isTrusted) return
+  try {
+    event.preventDefault()
+    let setupvalue = document.getElementById("setupinput").value
+    let punchlinevalue = document.getElementById("punchlineinput").value
+    await post('api/jokes', { setup: setupvalue, punchline: punchlinevalue });
+    let setupvalue1 = document.getElementById("setupinput").value = " ";
+    let punchlinevalue1 = document.getElementById("punchlineinput").value = " ";
+    document.getElementById('infoJokes').innerHTML = " "
+    let joke = await get('api/jokes');
+    let jokes = document.getElementById('infoJokes');
+    jokes.innerHTML = await generateJokeTable(joke);
+
+  } catch (err) {
+    console.error(err) // or alert it, or put the message on the page
+  }
 })
 
 
-
-async function main() {
-  console.log("hej");
-  try {
-    let jokes = document.getElementById('infoJokes');
-    console.log(jokes);
-    let joke = await get('api/jokes');
-    jokes.innerHTML = await generateJokeTable(joke);
-  } catch (e) {
-    console.log(e.name + ": " + e.message);
-  }
-}
-//main();
 
 
 

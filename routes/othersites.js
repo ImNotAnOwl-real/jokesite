@@ -4,9 +4,6 @@ const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
 
-const getServiceURL = 'https://krdo-joke-registry.herokuapp.com/api/beskeder';
-
-
 async function get(url) {
     const respons = await fetch(url);
     if (respons.status !== 200) // OK
@@ -24,18 +21,6 @@ router
             sendStatus(e, response);
         }
     })
-    // .post('/', async (request, response) => {
-    //         try {
-    //             let {setup, punchline} = request.body;
-    //             await controller.createJoke(setup, punchline);
-    //             response.send({message: 'Joke saved!'});
-    //         } catch (e) {
-    //             sendStatus(e, response);
-    //         }
-    //     }
-    // );
-
-
 
 
 function sendStatus(e, response) {

@@ -16,11 +16,11 @@ async function get(url) {
 
 
 router
-.get('/:site', async (request, response) => {
+.get('/:id', async (request, response) => {
     try {
         let result = await get("https://krdo-joke-registry.herokuapp.com/api/services");
         for (site of result) {
-            if (site._id == request.params.site) {
+            if (site._id == request.params.id) {
                 let url = site.address
                 if(url[url.length - 1] != '/'){
                     url += '/'
@@ -28,7 +28,6 @@ router
                 result = await get(url + 'api/jokes')
             }
         }
-        // result = await get("https://jokenator4000.herokuapp.com/api/jokes%22)
         response.send(result)
 
 
@@ -37,30 +36,6 @@ router
     }
 
 })
-//     let id;
-//     let address;
-//     for (site of sites) {
-//     if (site.name === request.params.id) {
-//     id = site._id;
-//     address = site.address;
-// }
-
-// let jokesfraSites = await controller.getJokesFraSites(address);
-// response.send(jokesfraSites);
-
-// .post('/', async (request, response) => {
-//         try {
-//             let {setup, punchline} = request.body;
-//             await controller.createJoke(setup, punchline);
-//             response.send({message: 'Joke saved!'});
-//         } catch (e) {
-//             sendStatus(e, response);
-//         }
-//     }
-// );
-
-
-
 
 function sendStatus(e, response) {
     console.error("Exception: " + e);
