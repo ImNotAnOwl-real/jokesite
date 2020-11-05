@@ -127,7 +127,7 @@ function findJokes() {
 
 
 let addJoke = document.getElementById("submit")
-
+// hej
 addJoke.addEventListener('click', async (event) => {
   if (!event.isTrusted) return
   try {
